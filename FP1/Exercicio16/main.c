@@ -16,24 +16,26 @@ int main(int argc, char** argv){
     //Calculo da taxa em percentagem
     taxa = taxa/100;
     
-    //Calculo dos juros
+    //Calculo dos juros do 1º trimestre
     juros = deposito * taxa;
     deposito += juros;
     
-    //Apresentação dos resultados
-    //1º Trimestre
+    //Apresentação dos resultados do 1º trimestre
+    puts("");
     printf("Os juros do primeiro trimestre foram %.2f€\n",juros);
     printf("O saldo é %.2f€\n", deposito);
     
-    juros = deposito * taxa;
-    deposito += juros;
     //2º Trimestre
+    juros = deposito * taxa;
+    deposito += juros;
+    
     printf("Os juros do primeiro trimestre foram %.2f€\n",juros);
     printf("O saldo é %.2f€\n", deposito);
     
+    //3º Trimestre
     juros = deposito * taxa;
     deposito += juros;
-    //3º Trimestre
+    
     printf("Os juros do primeiro trimestre foram %.2f€\n",juros);
     printf("O saldo é %.2f€\n", deposito);
     

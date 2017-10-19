@@ -6,8 +6,7 @@
  */
 int main(int argc, char** argv) {
     float min1, min2, min3, min4, min5, seg1, seg2, seg3, seg4, seg5;
-    float a, segtot1, b, segtot2, c, segtot3, d, segtot4, e, segtot5;
-    int segundoshora, segtots, hora, segundo, minuto;
+    int segundoshora, segundos_totais = 0, hora, segundo, minuto;
     
     segundoshora = 3600;
     
@@ -18,8 +17,8 @@ int main(int argc, char** argv) {
     printf("Segundos: ");
     scanf("%f", &seg1);
     
-    a = min1 * 60;
-    segtot1 = a + seg1;
+    segundos_totais = min1 * 60;
+    segundos_totais += seg1;
     
     puts("Insira a duração da segunda música");
     printf("Minutos: ");
@@ -27,8 +26,8 @@ int main(int argc, char** argv) {
     printf("Segundos: ");
     scanf("%f", &seg2);
     
-    b = min2 * 60;
-    segtot2 = b + seg2;
+    segundos_totais += min2 * 60;
+    segundos_totais += seg2;
     
     puts("Insira a duração da terceira música");
     printf("Minutos: ");
@@ -36,8 +35,8 @@ int main(int argc, char** argv) {
     printf("Segundos: ");
     scanf("%f", &seg3);
     
-    c = min3 * 60;
-    segtot3 = c + seg3;
+    segundos_totais += min3 * 60;
+    segundos_totais += seg3;
     
     puts("Insira a duração da quarta música");
     printf("Minutos: ");
@@ -45,8 +44,8 @@ int main(int argc, char** argv) {
     printf("Segundos: ");
     scanf("%f", &seg4);
     
-    d = min4 * 60;
-    segtot4 = d + seg4;
+    segundos_totais += min4 * 60;
+    segundos_totais += seg4;
     
     puts("Insira a duração da quinta música");
     printf("Minutos: ");
@@ -54,17 +53,15 @@ int main(int argc, char** argv) {
     printf("Segundos: ");
     scanf("%f", &seg5);
     
-    e = min5 * 60;
-    segtot5 = e + seg5;
+    segundos_totais += min5 * 60;
+    segundos_totais += seg5;
     
     //Calculo da hora:min:seg
-    segtots = segtot1 + segtot2 + segtot3 + segtot4 + segtot5;
-    
-    hora = segtots / segundoshora;
-    minuto = (segtots - (segundoshora * hora)) / 60;
-    segundo = segtots - (segundoshora * hora) - (minuto * 60);
+        
+    hora = segundos_totais / segundoshora;
+    minuto = (segundos_totais - (segundoshora * hora)) / 60;
+    segundo = segundos_totais - (segundoshora * hora) - (minuto * 60);
     
     printf("O albúm tem a duração de %dH : %dM : %dS", hora, minuto, segundo);
     return (0);
 }
-

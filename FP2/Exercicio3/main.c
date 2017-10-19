@@ -5,18 +5,18 @@
  * 
  */
 int main(int argc, char** argv) {
-    int nota1, nota2, nota3;
+    float nota1, nota2, nota3;
     float media1, media2, media3, media_ponderada;
     
     puts("Media ponderada com avaliação");
     printf("Introduza a primeira nota: ");
-    scanf("%d", &nota1);
+    scanf("%f", &nota1);
     
     printf("Introduza a segunda nota: ");
-    scanf("%d", &nota2);
+    scanf("%f", &nota2);
     
     printf("Introduza a terceira nota: ");
-    scanf("%d", &nota3);
+    scanf("%f", &nota3);
     
     media1 = nota1 * 0.25;
     media2 = nota2 * 0.35;

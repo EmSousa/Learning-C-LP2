@@ -47,8 +47,7 @@ int main(int argc, char** argv) {
     
     //Calculo da velocidade média
     velocidade_media = ((distancia_viagem * 1000) / segundos_viagem) * 3.6;
-    
-    
+     
     puts("");
     //Apresentação final dos dados
     printf("A viagem durou %.0f horas e %.0f minutos \n", horaviagem, minutosviagem);

@@ -5,11 +5,11 @@
  * 
  */
 int main(int argc, char** argv) {
-    float x, y;
+    int x, y;
     
     puts("Definir o valor de Y atraves do valor de X");
     printf("Introduza o valor de X: ");
-    scanf("%f", &x);
+    scanf("%d", &x);
     
     if(x < 1){
         y = x;
@@ -19,7 +19,7 @@ int main(int argc, char** argv) {
         y = (x * 2);
     }
     
-    printf("O valor de Y = %.0f", y);
+    printf("O valor de Y = %d", y);
     
     
     return (EXIT_SUCCESS);

@@ -5,8 +5,8 @@
  * 
  */
 int main(int argc, char** argv) {
-    float temperatura_atual, diferenca_temperatura, tempo;
-    int temperatura_pretendida, tempo_segundos;
+    float temperatura_atual, diferenca_temperatura, tempo, tempo_segundos;
+    int temperatura_pretendida;
     
     puts("Tempo em segundos que demora o AC a atuar");
     printf("Introduza a temperatura atual: ");
@@ -21,12 +21,12 @@ int main(int argc, char** argv) {
         diferenca_temperatura = -(diferenca_temperatura);
         tempo = diferenca_temperatura * 3;
         tempo_segundos = tempo * 60;
-        printf("Serao necessario %d segundos para aquecer ate a temperatura desejada", tempo_segundos);
+        printf("Serao necessario %.0f segundos para aquecer ate a temperatura desejada", tempo_segundos);
                 
     }else if(diferenca_temperatura > 0){
         tempo = diferenca_temperatura * 2;
         tempo_segundos = tempo * 60;
-        printf("Serao necessario %d segundos para arrefecer ate a temperatura desejada", tempo_segundos);
+        printf("Serao necessario %.0f segundos para arrefecer ate a temperatura desejada", tempo_segundos);
     
     }else if(diferenca_temperatura == 0){
         puts("Introduziu a mesma temperatura!!!");

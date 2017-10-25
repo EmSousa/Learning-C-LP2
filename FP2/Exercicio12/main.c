@@ -16,9 +16,9 @@ int main(int argc, char** argv) {
     if(x == 0 && y == 0){
         printf("As coordenadas estao na origem!");
     }else if(x > 0 && y == 0){
-        printf("As coordenadas estao sobre o eixo do Y!");
-    }else if(x == 0 && y > 0){
         printf("As coordenadas estao sobre o eixo do X!");
+    }else if(x == 0 && y > 0){
+        printf("As coordenadas estao sobre o eixo do Y!");
     }else if(x > 0 && y > 0){
         printf("As coordenadas estao no 1º quadrante!");
     }else if(x < 0 && y > 0){

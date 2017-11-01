@@ -15,7 +15,7 @@ int main(int argc, char** argv) {
         if ( numero == -1){
             media = (soma / quantidade);
             printf("A media dos valores = %.2f ",media);
-            return 0;
+            break;
         }else {
             soma += numero;
             quantidade++;

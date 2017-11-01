@@ -7,6 +7,7 @@
 int main(int argc, char** argv) {
     float numero, soma, quantidade = 0, media;
     
+    puts("Media de uns determinados valores");
     while (numero != 1){
         printf("Introduza um valor: ");
         scanf("%f", &numero);

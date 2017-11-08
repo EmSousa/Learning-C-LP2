@@ -4,24 +4,31 @@
 /*
  * 
  */
-int asteriscos(int numero_ast) {
+
+int lerInteiro(){
+    int numero;
+    
+    scanf("%d", &numero);
+    return numero;
+}
+
+int asteriscos(int numero) {
     int i;
     
-    for (i = 1; i <= numero_ast; ++i) {
+    for (i = 1; i <= numero; ++i) {
         printf("*");
     }
     
 }
 
-
 int main(int argc, char** argv) {
-    int numero_asteriscos;
+    int numero;
     
     puts("Imprime o numero de asteriscos pedidos pelo utilizador");
     printf("Introduza o numero de asteriscos a imprimir no ecrã: ");
-    scanf("%d", &numero_asteriscos);
+    numero = lerInteiro();
     
-    asteriscos(numero_asteriscos);
+    asteriscos(numero);
     
     return (EXIT_SUCCESS);
 }

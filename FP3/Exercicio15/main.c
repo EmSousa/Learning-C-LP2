@@ -76,7 +76,6 @@ int main(int argc, char** argv) {
     printf("Numero de mulheres com salario abaixo de 1500€ e %d \n", numero_casos);
     printf("Numero de homens entre os 18 e 35 anos casados e %d \n", numero_casos2);
     
-    
     return (EXIT_SUCCESS);
 }
 

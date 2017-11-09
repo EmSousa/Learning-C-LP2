@@ -6,11 +6,16 @@
  */
 
 int NumerosImprimir(int numero_limite){
-    int i;
+    //int i;
     
-    for (i = 0; i <= numero_limite; ++i){
+    do{
+        printf(" %d", numero_limite);
+        --numero_limite;
+    } while (numero_limite >= 0);
+    
+    /*for (i = 0; i <= numero_limite; ++i){
         printf("%d \n", i);
-    }
+    }*/
 }
 
 int main(int argc, char** argv) {

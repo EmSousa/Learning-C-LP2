@@ -24,7 +24,7 @@ int lerInteiro(){
     int numero;
     
     while (1){
-        printf("Introduza um numero de asteriscos a imprimir no ecra: ");
+        printf("Introduza o numero dentro do intervalo: ");
         scanf("%d", &numero);
         if (numero <= MAXIMO && numero >= MINIMO){
             break;
@@ -35,23 +35,14 @@ int lerInteiro(){
     return numero;
 }
 
-int asteriscos(int numero) {
-    int i;
-    
-    for (i = 1; i <= numero; ++i) {
-        printf("*");
-    }
-    
-}
-
 int main(int argc, char** argv) {
     int numero;
     
-    puts("Imprime o numero de asteriscos pedidos pelo utilizador");
+    puts("Saber se um numero esta dentro do intervao (1 - 200)");
     
     numero = lerInteiro();
     
-    asteriscos(numero);
+    printf("\nO %d esta dentro do intervalo!", numero);
     
     return (EXIT_SUCCESS);
 }

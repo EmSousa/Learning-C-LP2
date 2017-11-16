@@ -26,10 +26,13 @@ void VetorB(int b[]){
 }
 
 void VetorC(int c[], int a[], int b[]){
-    int i;
+    int i, j;
     
     for (i = 0; i < TAMANHO_VET; ++i){
-        c[i] = a[i] + b[i];
+        c[i] = a[i];
+    }    
+    for (j = TAMANHO_VET; j < 20; ++j) {
+        c[j] = b[j - TAMANHO_VET];
     }
 }
 
@@ -48,7 +51,7 @@ void VetorD(int d[], int a[], int b[]){
             d[procura_vetor] = a[i];
             procura_vetor += 1;
         }
-       procura = 0;
+        procura = 0;
     }
     for(i = 0; i < procura_vetor; ++i){
         printf("Valor de vetor[%d]: %d\n", i, d[i]);
@@ -86,7 +89,7 @@ void VetorE(int e[], int a[], int b[]){
 }
 
 int main(int argc, char** argv) {
-    int a[TAMANHO_VET], b[TAMANHO_VET], c[TAMANHO_VET], d[TAMANHO_VET], e[TAMANHO_VET], i;
+    int a[TAMANHO_VET], b[TAMANHO_VET], c[20], d[TAMANHO_VET], e[TAMANHO_VET], i;
     
     puts("Vetor A: ");
     VetorA(a);
@@ -102,7 +105,7 @@ int main(int argc, char** argv) {
     
     puts("\nVetor C: ");
     VetorC(c, a, b);
-    for(i = 0; i < TAMANHO_VET; ++i){
+    for(i = 0; i < 20; ++i){
         printf("Valor de vetor[%d]: %d\n", i, c[i]);
     }
     

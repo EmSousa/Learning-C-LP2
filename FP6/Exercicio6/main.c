@@ -7,6 +7,7 @@
 /*
  * Ficha 6 - Exercicio 6
  */
+
 int main(int argc, char** argv) {
     char string[MAXIMO], carater;
     int ocorrencias;

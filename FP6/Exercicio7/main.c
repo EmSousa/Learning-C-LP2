@@ -5,7 +5,7 @@
 #define MAXIMO 45
 
 /*
- * Ficha 6 - Exercicio 6
+ * Ficha 6 - Exercicio 7
  */
 
 int main(int argc, char** argv) {

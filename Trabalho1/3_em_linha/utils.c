@@ -85,15 +85,9 @@ void vezJogar(char matrix[][MAX_TAMANHO], char token[]) { //Pedido das posiçoes
                 --i; //No caso de inserir posicoes fora da matriz, volta ao mesmo jogador
             }
         }
-        
-        if (i == 0) { //Caso seja o turno do jogador 1, preenche a posicao da matriz com o seu token
-            matrix[linhas][coluna] = token[0];
-            imprimirMatrix(matrix);
-        }
-        if (i == 1) { //Caso seja o turno do jogador 2, preenche a posicao da matriz com o seu token
-            matrix[linhas][coluna] = token[1];
-            imprimirMatrix(matrix);
-        }
+
+        matrix[linhas][coluna] = token[i]; //Preenche a posicao da matriz com o token do jogador
+        imprimirMatrix(matrix);
 
         if (i == 1) { //Para voltar ao jogador 1, fazendo com que o ciclo for "reinicie"
             i = -1;

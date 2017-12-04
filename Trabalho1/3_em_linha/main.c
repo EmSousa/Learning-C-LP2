@@ -13,7 +13,6 @@ int main(int argc, char** argv) {
     definirToken(token);
     fazerMatrix(matrix);
     vezJogar(matrix, token);
-    imprimirMatrix(matrix);
 
     return (EXIT_SUCCESS);
 }

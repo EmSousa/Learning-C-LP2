@@ -11,5 +11,6 @@ void fazerMatrix(char matrix[][MAX_TAMANHO]);
 void imprimirMatrix(char matrix[][MAX_TAMANHO]);
 void vezJogar(char matrix[][MAX_TAMANHO], char token[]);
 int verificaJogada(char matrix[][MAX_TAMANHO], int linhas, int colunas, int coluna, int i, char token[]);
+int verificaVitoria(char matrix[][MAX_TAMANHO], int i, char token[]);
 
 #endif /* UTILS_H */

@@ -47,7 +47,7 @@ void fazerMatrix(char matrix[][MAX_TAMANHO]) { //Funcao para fazer a matriz=
     imprimirMatrix(matrix);
 }
 
-void imprimirMatrix(char matrix[][MAX_TAMANHO]) { //Funcao para imiprimir a matriz com a jogada
+void imprimirMatrix(char matrix[][MAX_TAMANHO]) { //Funcao para imiprimir a matriz 
     int i, j;
 
     for (i = 0; i < MAX_TAMANHO; ++i) {
@@ -59,7 +59,7 @@ void imprimirMatrix(char matrix[][MAX_TAMANHO]) { //Funcao para imiprimir a matr
 }
 
 void vezJogar(char matrix[][MAX_TAMANHO], char token[]) { //Pedido das posiçoes da jogada para cada jogador
-    int i, linhas, coluna, verificado;
+    int i, linhas, coluna, verificado, vitoria;
     char colunas;
 
     for (i = 0; i < MAX_JOGADORES; ++i) {
@@ -73,30 +73,37 @@ void vezJogar(char matrix[][MAX_TAMANHO], char token[]) { //Pedido das posiçoes
         clean_buffer();
 
         coluna = colunas - 64; //Passar a letra para numero
-        
-        verificado = verificaJogada(matrix, linhas, colunas, coluna, i, token); 
-        
-        if (verificado < 3){ //Acoes a tomar depois de verificar a jogada
-            if (verificado == 0){
+
+        verificado = verificaJogada(matrix, linhas, colunas, coluna, i, token);
+
+        if (verificado < 4) { //Acoes a tomar depois de verificar a jogada
+            if (verificado == 0) {
                 break; //Este e o caso de o jogado introduzir Z0, desistindo o programa para
-            } else if (verificado == 1){
+            } else if (verificado == 1) {
                 --i; //No caso de inserir a mesma casa de jogo volta a chamar o mesmo jogador
-            } else if (verificado == 2){
+            } else if (verificado == 2) {
                 --i; //No caso de inserir posicoes fora da matriz, volta ao mesmo jogador
+            } else if (verificado == 3) {
+                matrix[linhas][coluna] = token[i]; //Preenche a posicao da matriz com o token do jogador
+
             }
         }
 
-        matrix[linhas][coluna] = token[i]; //Preenche a posicao da matriz com o token do jogador
         imprimirMatrix(matrix);
+
+        vitoria = verificaVitoria(matrix, i, token); //Vai verificar se com o token colocado antes o jogador ganha o jogo
+
+        if (vitoria == 1) { //Caso haja vitoria o programa encerra
+            break;
+        }
 
         if (i == 1) { //Para voltar ao jogador 1, fazendo com que o ciclo for "reinicie"
             i = -1;
         }
-
     }
 }
 
-int verificaJogada(char matrix[][MAX_TAMANHO], int linhas, int colunas, int coluna, int i, char token[]){ //Funcao que verifica a jogada
+int verificaJogada(char matrix[][MAX_TAMANHO], int linhas, int colunas, int coluna, int i, char token[]) { //Funcao que verifica a jogada
 
     if (linhas == 0 && colunas == 'Z') { //Caso um jogador insira a posição "0Z" esse jogador desiste, dando a vitoria ao oponente.
         printf("O jogador %d desistiu!\n", i + 1);
@@ -106,17 +113,56 @@ int verificaJogada(char matrix[][MAX_TAMANHO], int linhas, int colunas, int colu
             printf("\nPARABÉNS JOGADOR %d GANHOU O JOGO!\n", i);
         }
         return 0;
-    }
-    if (matrix[linhas][coluna] == token[0] || matrix[linhas][coluna] == token[1]){ 
+    } else if (matrix[linhas][coluna] == token[0] || matrix[linhas][coluna] == token[1]) {
         printf("Posição ocupada! Por favor volte a inserir!\n"); //Para saber se a posição de jogo escolhida pelo jogador esta ocupada
         return 1;
-    }
-    if (linhas < 1 || linhas > 9){
-        printf("Posição inexistente, por favor volte a inserir!\n"); //Caso a posicao inserida seja fora da matriz
+    } else if (linhas < 1 || linhas > 9) {
+        printf("Posição inexistente, por favor volte a inserir!\n"); //Caso a posicao inserida seja fora das linhas da matriz
         return 2;
-    }
-    if (coluna < 1 || coluna > 9){
-        printf("Posição inexistente, por favor volte a inserir!\n"); //Caso a posicao inserida seja fora da matriz
+    } else if (coluna < 1 || coluna > 9) {
+        printf("Posição inexistente, por favor volte a inserir!\n"); //Caso a posicao inserida seja fora das colunas da matriz
         return 2;
+    } else {
+        return 3;
+    }
+}
+
+int verificaVitoria(char matrix[][MAX_TAMANHO], int i, char token[]) {
+    int j, k;
+
+    for (j = 1; j < MAX_TAMANHO; ++j) { //Verifica se tem 3 em linha na linha
+        for (k = 1; k < MAX_TAMANHO; ++k) {
+            if (matrix[j][k] == token[i] && matrix[j][(k + 1)] == token[i] && matrix[j][(k + 2)] == token[i]) {
+                printf("O JOGADOR %d GANHOU O JOGO!", i + 1);
+                return 1;
+            }
+        }
+    }
+
+    for (j = 1; j < MAX_TAMANHO; ++j) { //Verifica se tem 3 em linha na coluna
+        for (k = 1; k < MAX_TAMANHO; ++k) {
+            if (matrix[j][k] == token[i] && matrix[(j + 1)][k] == token[i] && matrix[(j + 2)][k] == token[i]) {
+                printf("O JOGADOR %d GANHOU O JOGO!", i + 1);
+                return 1;
+            }
+        }
+    }
+
+    for (j = 1; j < MAX_TAMANHO; ++j) { //Verifica se tem 3 em linha na diagonal "\"
+        for (k = 1; k < MAX_TAMANHO; ++k) {
+            if (matrix[j][k] == token[i] && matrix[(j + 1)][(k + 1)] == token[i] && matrix[(j + 2)][(k + 2)] == token[i]) {
+                printf("O JOGADOR %d GANHOU O JOGO!", i + 1);
+                return 1;
+            }
+        }
+    }
+
+    for (j = 1; j < MAX_TAMANHO; ++j) { //Verifica se tem 3 em linha na diagonal "/"
+        for (k = 1; k < MAX_TAMANHO; ++k) {
+            if (matrix[j][k] == token[i] && matrix[(j + 1)][(k - 1)] == token[i] && matrix[(j + 2)][(k - 2)] == token[i]) {
+                printf("O JOGADOR %d GANHOU O JOGO!", i + 1);
+                return 1;
+            }
+        }
     }
 }

@@ -85,7 +85,6 @@ void vezJogar(char matrix[][MAX_TAMANHO], char token[]) { //Pedido das posiçoes
                 --i; //No caso de inserir posicoes fora da matriz, volta ao mesmo jogador
             } else if (verificado == 3) {
                 matrix[linhas][coluna] = token[i]; //Preenche a posicao da matriz com o token do jogador
-
             }
         }
 

@@ -4,7 +4,7 @@
 #include "utils.h"
 
 /*
- * Trabalho pratico 1
+ * Trabalho pratico 2
  */
 
 int main(int argc, char** argv) {
@@ -14,7 +14,7 @@ int main(int argc, char** argv) {
 
     contador = lerContador();
 
-    printf("Jogo do 3 em linha\n");
+    printf("Jogo do 3 em linha\n"); //Menu de opcoes para o jogo
 
     do {
         printf("Escolha a opcao pretendida:\n");
@@ -26,8 +26,8 @@ int main(int argc, char** argv) {
         scanf("%d", &escolha);
 
         switch (escolha) {
-            case 1:
-                printf("Jogo 1v1\n");
+            case 1: //Jogar Jogador contra Jogador
+                printf("Jogo 1 v 1\n");
                 definirToken(token, dados_jogador, jogar_pc);
                 fazerMatrix(matrix);
                 vezJogar(matrix, token, dados_jogador, jogar_pc);
@@ -37,8 +37,8 @@ int main(int argc, char** argv) {
                 dados_jogador[1].jogos = 1;
                 guardarFicheiro(dados_jogador, MAX_JOGADORES);
                 break;
-            case 2:
-                printf("Jogo 1vCortana\n");
+            case 2: //Jogar Jogador contra Computado
+                printf("Jogo 1 v PC\n");
                 jogar_pc = 1;
                 definirToken(token, dados_jogador, jogar_pc);
                 fazerMatrix(matrix);
@@ -49,8 +49,8 @@ int main(int argc, char** argv) {
                 dados_jogador[0].jogos = 1;
                 guardarFicheiro(dados_jogador, 1);
                 break;
-            case 3:
-                printf("Ficheiro com resultados\n");
+            case 3: //Apresentar Ficheiro binário com resultados
+                printf("Resultados\n");
                 info = (Jogador *) malloc(contador * sizeof (Jogador));
                 FILE *ficheiro = fopen("jogadores.dat", "rb");
                 for (i = 0; i < contador; ++i) {
@@ -62,8 +62,8 @@ int main(int argc, char** argv) {
                 free(info);
                 info = NULL;
                 break;
-            case 4:
-                printf("A sair do jogo\n");
+            case 4: //Opcao para sair do jogo
+                printf("A sair do jogo...\n");
                 break;
             default:
                 printf("Insira uma escolha valida!\n");
@@ -73,4 +73,3 @@ int main(int argc, char** argv) {
 
     return (EXIT_SUCCESS);
 }
-

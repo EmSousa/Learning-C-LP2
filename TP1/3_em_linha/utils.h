@@ -7,7 +7,6 @@
 #define MAX_NOME 10
 
 //Dados dos Jogadores
-
 typedef struct jogador {
     char nome[MAX_NOME];
     int jogos;

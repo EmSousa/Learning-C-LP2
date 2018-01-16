@@ -8,19 +8,68 @@
  */
 
 int main(int argc, char** argv) {
-    char token[MAX_JOGADORES], matrix[MAX_TAMANHO][MAX_TAMANHO], nome[10], nome2[10];
-    int i;
+    char token[MAX_JOGADORES], matrix[MAX_TAMANHO][MAX_TAMANHO];
+    int i, escolha, jogar_pc = 0, contador = 0;
+    Jogador dados_jogador[MAX_JOGADORES], *info = NULL;
 
-    for (i = 0; i < MAX_JOGADORES-1; ++i) {
-        printf("Jogador %d introduza o seu nome: ", i+1);
-        scanf("%s", &nome);
-        printf("Jogador %d introduza o seu nome: ", i+2);
-        scanf("%s", &nome2);
-    }
-    
-    definirToken(token, nome, nome2);
-    fazerMatrix(matrix);
-    vezJogar(matrix, token, nome, nome2);
+    contador = lerContador();
+
+    printf("Jogo do 3 em linha\n");
+
+    do {
+        printf("Escolha a opcao pretendida:\n");
+        printf("1 -> Jogador 1 vs Jogador 2\n");
+        printf("2 -> Jogador vs Cortana(AI)\n");
+        printf("3 -> Tabela Classificativa\n");
+        printf("4 -> Sair do jogo\n");
+        printf("Opcao: ");
+        scanf("%d", &escolha);
+
+        switch (escolha) {
+            case 1:
+                printf("Jogo 1v1\n");
+                definirToken(token, dados_jogador, jogar_pc);
+                fazerMatrix(matrix);
+                vezJogar(matrix, token, dados_jogador, jogar_pc);
+                contador += 2;
+                contadorJogadores(contador);
+                dados_jogador[0].jogos = 1;
+                dados_jogador[1].jogos = 1;
+                guardarFicheiro(dados_jogador, MAX_JOGADORES);
+                break;
+            case 2:
+                printf("Jogo 1vCortana\n");
+                jogar_pc = 1;
+                definirToken(token, dados_jogador, jogar_pc);
+                fazerMatrix(matrix);
+                vezJogar(matrix, token, dados_jogador, jogar_pc);
+                jogar_pc = 0;
+                contador += 1;
+                contadorJogadores(contador);
+                dados_jogador[0].jogos = 1;
+                guardarFicheiro(dados_jogador, 1);
+                break;
+            case 3:
+                printf("Ficheiro com resultados\n");
+                info = (Jogador *) malloc(contador * sizeof (Jogador));
+                FILE *ficheiro = fopen("jogadores.dat", "rb");
+                for (i = 0; i < contador; ++i) {
+                    fread(&info[i], sizeof (Jogador), 1, ficheiro);
+                }
+                fclose(ficheiro);
+                free(ficheiro);
+                tabelaClassificativa(contador, info);
+                free(info);
+                info = NULL;
+                break;
+            case 4:
+                printf("A sair do jogo\n");
+                break;
+            default:
+                printf("Insira uma escolha valida!\n");
+                break;
+        }
+    } while (escolha != 4);
 
     return (EXIT_SUCCESS);
 }

@@ -112,13 +112,38 @@ void jogarPc(char matrix[][MAX_TAMANHO], char token[], int *linhas, char *coluna
 
 }
 
+void sugestaoJogada(char matrix[][MAX_TAMANHO], char token[], int *linhas, char *colunas) { //Funcao que sugere uma jogada possivel que permite ao utilizador ganhar
+    int j, k;
+
+    for (j = 0; j < MAX_TAMANHO; ++j) {
+        for (k = 0; k < MAX_TAMANHO; ++k) {
+            if (matrix[j][k] == token[0] && matrix[j][(k + 1)] == token[0] && matrix[j][(k + 2)] == '-') { //Verifica se tem 2 em linha na linha e sugere a terceira posicao
+                printf("Deveria jogar na posicao |%d|%c|\n", (j+1), (k+67));
+                return;
+            } else if (matrix[j][k] == token[0] && matrix[(j + 1)][k] == token[0] && matrix[(j + 2)][k] == '-') { //Verifica se tem 2 em linha na coluna e sugere a terceira posicao
+                printf("Deveria jogar na posicao |%d|%c|\n", (j+3), (k+65));
+                return;
+            } else if (matrix[j][k] == token[0] && matrix[(j + 1)][(k + 1)] == token[0] && matrix[(j + 2)][(k + 2)] == '-') { //Verifica se tem 2 em linha na diagonal "\" e sugere a terceira posicao
+                printf("Deveria jogar na posicao |%d|%c|\n", (j+3), (k+67));
+                return;
+            } else if (matrix[j][k] == token[0] && matrix[(j + 1)][(k - 1)] == token[0] && matrix[(j + 2)][(k - 2)] == '-') { //Verifica se tem 2 em linha na diagonal "/" e sugere a terceira posicao
+                printf("Deveria jogar na posicao |%d|%c|\n",(j+3), (k+63));
+                return;
+            }
+        }
+    }
+}
+
 void vezJogar(char matrix[][MAX_TAMANHO], char token[], Jogador dados_jogador[], int jogar_pc) { //Pedido das posiçoes da jogada para cada jogador
     int i, linhas, linha, coluna, verificado, vitoria, contador_jogada = 0;
     char colunas;
 
     for (i = 0; i < MAX_JOGADORES; ++i) { //Pede a jogada ao jogador
         printf("Se pretende desistir, introduza a pozição 0Z!\n");
-        if (i == 0) {
+       if (i == 0) {
+           if (contador_jogada >= 0) { 
+                sugestaoJogada(matrix, token, &linhas, &colunas);
+            }
             printf("%s insira as posiçoes da sua jogada \n", dados_jogador[i].nome);
             printf("Linha: ");
             scanf("%d", &linhas);

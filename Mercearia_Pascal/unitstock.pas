@@ -1,0 +1,86 @@
+Unit UnitStock;
+
+Interface
+
+Uses
+  sysutils;
+Const
+  MAX = 25;
+type
+    data = record
+         inf1:string[50];
+         inf2:string[50];
+         inf3:string[50];
+         inf4:string[50];
+    end;
+var
+   infor: array[1..MAX] of data;
+   count: integer = 0;
+   opcao: integer;
+
+procedure IntroduzirProduto();
+procedure LerFicheiro(name: string);
+procedure GravarFicheiro(name: string);
+procedure MostrarDados();
+
+Implementation
+        procedure IntroduzirProduto();
+        begin
+            count := count + 1;
+            WriteLn();
+            Write('#', count, ' Nome do Produto: ');
+            ReadLn(infor[count].inf2);
+            Write('#', count, ' Quantidade: ');
+            ReadLn (infor[count].inf3);
+            Write('#', count, ' Preco Unitario: ');
+            ReadLn(infor[count].inf4);
+            Writeln();
+        end;
+
+        procedure EscreverDados(i : integer);
+        begin
+            WriteLn('--------------------------------');
+            Write(' ID: ', i, '' + infor[i].inf1, ' ');
+            Write('| Produto: ' + infor[i].inf2, ' ');
+            Write('| Quantidade em Stock: ' + infor[i].inf3, ' ');
+            Writeln('| Preco Unitario: ' + infor[i].inf4, ' ');
+            writeln('--------------------------------');
+        end;
+
+        procedure LerFicheiro(name: string);
+        var
+           F:file of data;
+        begin
+            If FileExists(name) Then Begin
+               Assign(F,name);
+               reset(F);
+               While Not (EoF(F)) Do Begin
+                     count := count + 1;
+                     Read(F, infor[count]);
+               End;
+               Close(F);
+            end;
+        end;
+
+        procedure GravarFicheiro(name: string);
+        var
+           F: file of data;
+           i: integer;
+        begin
+             Assign(F,name);
+             rewrite(f, sizeof(data));
+             For i:=1 To count Do Begin
+                 Write(F, infor[i]);
+             End;
+             Close(F);
+        end;
+
+        procedure MostrarDados();
+        var
+           i: integer;
+        begin
+             For i:=1 To count Do Begin
+                 EscreverDados(i);
+             End;
+        End;
+End.

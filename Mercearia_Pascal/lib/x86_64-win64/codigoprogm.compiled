@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <Compiler Value="F:\Programas\lazarus\fpc\3.0.2\bin\x86_64-win64\fpc.exe" Date="1247521003"/>
+  <Params Value=" -MObjFPC -Scghi -O1 -g -gl -l -vewnhibq &quot;-FiF:\Aulas\2º Semestre\PROG.1\8160285\TrabalhoMercearia\Programação\lib\x86_64-win64&quot; &quot;-FuF:\Aulas\2º Semestre\PROG.1\8160285\TrabalhoMercearia\Programação\&quot; &quot;-FUF:\Aulas\2º Semestre\PROG.1\8160285\TrabalhoMercearia\Programação\lib\x86_64-win64\&quot; codigoprogm.pas"/>
+</CONFIG>

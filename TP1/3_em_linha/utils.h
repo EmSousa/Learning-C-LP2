@@ -26,6 +26,5 @@ void contadorJogadores(int contador);
 int lerContador();
 void guardarFicheiro(Jogador dados_jogador[], int nr_jogador);
 void tabelaClassificativa(int contador, Jogador info[]);
-
 void sugestaoJogada(char matrix[][MAX_TAMANHO], char token[], int *linhas, char *colunas);
 #endif /* UTILS_H */
